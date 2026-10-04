@@ -160,6 +160,15 @@ final class HubModel: ObservableObject {
         lastAction = "已打开 yt-dlp Releases 页面"
     }
 
+    func installClaudeChinese() {
+        let script = AppPaths.root.appendingPathComponent("components/claude-zh/install.command")
+        guard FileManager.default.isReadableFile(atPath: script.path) else {
+            lastAction = "未找到内置 Claude 中文安装器"
+            return
+        }
+        runInNewTerminal("/bin/bash \(Self.shellString(script.path))")
+    }
+
     func openBrowserRoutesFolder() {
         let folder = AppPaths.component("laziest-browser")
         NSWorkspace.shared.activateFileViewerSelecting([folder])
@@ -724,6 +733,10 @@ struct DashboardView: View {
 
                 GroupBox("命令与 Tab 快捷键") {
                     AutomationView(model: model, store: store)
+                }
+
+                GroupBox("Claude 中文") {
+                    Button("安装中文界面") { model.installClaudeChinese() }
                 }
 
                 DisclosureGroup("CLI 配置") {

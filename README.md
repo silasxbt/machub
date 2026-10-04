@@ -15,6 +15,7 @@
 - 单一内存占用仪表。
 - 一键 Mac 诊断：完成后将 PDF 报告保存到桌面，并优先在 Safari 中预览。
 - Codex 桌面端唤起并复制内容；Claude Code `--print` 一次性请求与结果显示。
+- Claude Desktop 简体中文：面板一键打开内置安装器；只支持已验证的 2.9939.2 资源版本，安装前完整备份原应用，卸载脚本可恢复。
 - Codex TOML / Claude JSON 的脱敏检查、带时间戳备份的单项编辑。
 - Matter 网关的依赖安装、仅回环地址启动、六位 PIN 访问控制、可选 Cloudflare Tunnel 生命周期管理。
 - GitHub Release 自动更新：只有发现较新且通过签名校验的发布包时，顶部退出按钮右侧才显示“更新”。
