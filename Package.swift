@@ -2,10 +2,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "MacEfficiencyHub",
+    name: "mac+",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "MacEfficiencyHub", targets: ["MacEfficiencyHub"])
+        .executable(name: "mac+", targets: ["MacEfficiencyHub"])
     ],
     targets: [
         .executableTarget(

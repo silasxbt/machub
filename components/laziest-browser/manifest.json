@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "MacPad Browser Routes",
+  "name": "mac+ Browser Routes",
   "version": "1.2.0",
-  "description": "MacPad browser prefix routes with built-in AI, web, and Web3 shortcuts.",
+  "description": "mac+ browser prefix routes with built-in AI, web, and Web3 shortcuts.",
   "permissions": [
     "storage",
     "webNavigation",

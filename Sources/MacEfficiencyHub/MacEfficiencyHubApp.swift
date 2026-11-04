@@ -6,7 +6,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 @main
-struct MacEfficiencyHubApp: App {
+struct MacPlusApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
     var body: some Scene {
@@ -35,7 +35,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-        item.button?.image = NSImage(systemSymbolName: "bolt.horizontal.circle.fill", accessibilityDescription: "Mac Efficiency Hub")
+        item.button?.image = NSImage(systemSymbolName: "bolt.horizontal.circle.fill", accessibilityDescription: "mac+")
         item.button?.target = self
         item.button?.action = #selector(showMainPanel)
         statusItem = item
@@ -64,7 +64,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             )
             let hostingController = NSHostingController(rootView: rootView)
             let window = NSWindow(contentViewController: hostingController)
-            window.title = "Mac Efficiency Hub"
+            window.title = "mac+"
             window.setContentSize(NSSize(width: 560, height: 820))
             window.minSize = NSSize(width: 520, height: 700)
             window.styleMask = [.titled, .closable, .miniaturizable, .resizable]
@@ -89,7 +89,6 @@ final class HubModel: ObservableObject {
     @Published var isRunningDiagnostic = false
     @Published var toolOutput = ""
     @Published var ytdlpPath: String? = LocalTools.findExecutable("yt-dlp")
-    @Published var memoryMeter = MemoryMeter(usedFraction: 0, label: "未读取")
 
     let currencies = ["USD", "CNY", "EUR", "JPY", "GBP", "HKD", "TWD", "KRW", "SGD", "AUD", "CAD"]
     private let monitor = NWPathMonitor()
@@ -197,7 +196,7 @@ final class HubModel: ObservableObject {
                     if let preferenceError {
                         self?.lastAction = "已启动 Safari 宿主，但无法打开扩展设置：\(preferenceError.localizedDescription)"
                     } else {
-                        self?.lastAction = "已打开 Safari 扩展设置，请启用 MacPad Browser Routes"
+                        self?.lastAction = "已打开 Safari 扩展设置，请启用 mac+ Browser Routes"
                     }
                 }
             }
@@ -221,7 +220,7 @@ final class HubModel: ObservableObject {
             let encoder = JSONEncoder()
             encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
             let desktop = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Desktop", isDirectory: true)
-            let target = desktop.appendingPathComponent("MacPad-browser-routes.json")
+            let target = desktop.appendingPathComponent("mac+-browser-routes.json")
             try encoder.encode(export).write(to: target, options: .atomic)
             NSWorkspace.shared.activateFileViewerSelecting([target])
             lastAction = "已导出 \(routes.count) 条浏览器规则到桌面"
@@ -235,7 +234,7 @@ final class HubModel: ObservableObject {
         guard ytdlpPath != nil else { lastAction = "未找到 yt-dlp，请点击配置"; return }
         lastAction = "yt-dlp 正在下载最高\(format == .mp3 ? "音质 MP3" : "画质 MP4")…"
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let destination = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Downloads/MacEfficiencyHub")
+            let destination = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Downloads/mac+")
             let result = Result { try LocalTools.downloadWithYTDLP(url: url, outputDirectory: destination, format: format) }
             Task { @MainActor in
                 switch result {
@@ -243,13 +242,6 @@ final class HubModel: ObservableObject {
                 case .failure(let error): self?.lastAction = "下载失败：\(error.localizedDescription)"
                 }
             }
-        }
-    }
-
-    func refreshMemoryMeter() {
-        DispatchQueue.global(qos: .utility).async { [weak self] in
-            let meter = LocalTools.memoryMeter()
-            Task { @MainActor in self?.memoryMeter = meter }
         }
     }
 
@@ -516,7 +508,7 @@ final class HubModel: ObservableObject {
         switch builtIn {
         case .panel:
             NSApplication.shared.activate(ignoringOtherApps: true)
-            lastAction = "已唤起 Mac Efficiency Hub"
+            lastAction = "已唤起 mac+"
         case .codex:
             let text = NSPasteboard.general.string(forType: .string) ?? ""
             guard !text.isEmpty else { lastAction = "剪贴板没有可发送给 Codex 的文字"; return }
@@ -545,9 +537,6 @@ final class HubModel: ObservableObject {
         case .ytdlp:
             checkYTDLP()
             lastAction = ytdlpPath == nil ? "未找到 yt-dlp，请在面板中配置" : "yt-dlp 已配置"
-        case .memory:
-            refreshMemoryMeter()
-            lastAction = "正在刷新内存读数"
         case .cleanMemory:
             guard FileManager.default.isExecutableFile(atPath: "/usr/bin/purge") else {
                 lastAction = "当前系统没有可用的 purge 命令"
@@ -649,7 +638,7 @@ enum AppPaths {
     static func safariBrowserRoutesApp() -> URL? {
         let candidate = root
             .appendingPathComponent("components", isDirectory: true)
-            .appendingPathComponent("MacPad Browser Routes.app", isDirectory: true)
+            .appendingPathComponent("mac+ Browser Routes.app", isDirectory: true)
         return FileManager.default.fileExists(atPath: candidate.path) ? candidate : nil
     }
 }
@@ -695,6 +684,25 @@ struct SettingsView: View {
     }
 }
 
+struct CollapsibleFeature<Content: View>: View {
+    private let title: String
+    private let content: Content
+    @AppStorage private var isExpanded: Bool
+
+    init(_ title: String, id: String, initiallyExpanded: Bool = true, @ViewBuilder content: () -> Content) {
+        self.title = title
+        self.content = content()
+        _isExpanded = AppStorage(wrappedValue: initiallyExpanded, "feature.expanded.\(id)")
+    }
+
+    var body: some View {
+        DisclosureGroup(title, isExpanded: $isExpanded) {
+            content
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
 struct DashboardView: View {
     @ObservedObject var model: HubModel
     @ObservedObject var store: UserStore
@@ -723,29 +731,29 @@ struct DashboardView: View {
                     if updater.hasUpdate { Button("更新") { updater.installAvailableUpdate() } }
                 }
 
-                GroupBox("快捷提示词") {
+                CollapsibleFeature("快捷提示词", id: "prompts") {
                     PromptsView(model: model, store: store, promptTitle: $promptTitle, promptBody: $promptBody)
                 }
 
-                GroupBox("浏览器快捷路由") {
+                CollapsibleFeature("浏览器快捷路由", id: "browser-routes") {
                     BrowserRoutesView(model: model, store: store)
                 }
 
-                GroupBox("命令与 Tab 快捷键") {
+                CollapsibleFeature("命令与 Tab 快捷键", id: "automation") {
                     AutomationView(model: model, store: store)
                 }
 
-                GroupBox("Claude 中文") {
+                CollapsibleFeature("Claude 中文", id: "claude-chinese") {
                     Button("安装中文界面") { model.installClaudeChinese() }
                 }
 
-                DisclosureGroup("CLI 配置") {
+                CollapsibleFeature("CLI 配置", id: "cli-configuration", initiallyExpanded: false) {
                     ConfigurationView(model: model, store: store)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
                 VStack(alignment: .leading, spacing: 14) {
-                    GroupBox("网络检测与新启日历") {
+                    CollapsibleFeature("网络检测与新启日历", id: "network-calendar") {
                         VStack(alignment: .leading, spacing: 10) {
                             HStack(spacing: 8) {
                                 TextField("网址标签", text: $siteLabel)
@@ -779,7 +787,7 @@ struct DashboardView: View {
                         }
                     }
 
-                    GroupBox("yt-dlp 与内存") {
+                    CollapsibleFeature("yt-dlp", id: "ytdlp") {
                         VStack(alignment: .leading, spacing: 12) {
                             if model.ytdlpPath == nil {
                                 HStack {
@@ -801,21 +809,10 @@ struct DashboardView: View {
                                         .disabled(downloadURL.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                                 }
                             }
-                            Divider()
-                            HStack {
-                                Gauge(value: model.memoryMeter.usedFraction) {
-                                    Text("内存")
-                                } currentValueLabel: {
-                                    Text(model.memoryMeter.label)
-                                }
-                                .gaugeStyle(.accessoryLinear)
-                                Button { model.refreshMemoryMeter() } label: { Image(systemName: "arrow.clockwise") }
-                                    .buttonStyle(.borderless)
-                            }
                         }
                     }
 
-                    GroupBox("货币换算") {
+                    CollapsibleFeature("货币换算", id: "currency") {
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
                                 TextField("金额", text: $model.amount).textFieldStyle(.roundedBorder)
@@ -829,7 +826,7 @@ struct DashboardView: View {
                         }
                     }
 
-                    GroupBox("Mac 诊断") {
+                    CollapsibleFeature("Mac 诊断", id: "diagnostics") {
                         VStack(alignment: .leading, spacing: 10) {
                             Text("检查硬件、电池、存储、系统日志与外设状态。完成后会将报告导出为 PDF 到桌面，并在浏览器中预览。")
                                 .font(.caption)
@@ -843,7 +840,7 @@ struct DashboardView: View {
                         }
                     }
 
-                    GroupBox("Codex 与 Claude 输入预设") {
+                    CollapsibleFeature("Codex 与 Claude 输入预设", id: "assistant-presets") {
                         VStack(alignment: .leading, spacing: 8) {
                             HStack {
                                 TextField("预设标签", text: $assistantLabel)
@@ -868,7 +865,7 @@ struct DashboardView: View {
                     }
                 }
 
-                DisclosureGroup("Matter 网关") {
+                CollapsibleFeature("Matter 网关", id: "matter", initiallyExpanded: false) {
                     MatterGatewayView(store: store, matter: matter, tunnel: tunnel)
                         .frame(minHeight: 460)
                 }
@@ -890,7 +887,6 @@ struct DashboardView: View {
             .padding()
         }
         .onAppear {
-            model.refreshMemoryMeter()
             model.checkYTDLP()
             model.configureShortcuts(enabled: store.settings.globalShortcutsEnabled, shortcutKey: store.settings.tabShortcutKey, target: store.settings.tabShortcutTarget, actions: store.actions, scripts: store.scripts, pinnedSites: store.pinnedSites, codexSystemPrompt: store.systemPrompts.codex, claudeSystemPrompt: store.systemPrompts.claude)
             updater.check(repository: store.settings.githubRepository)
@@ -1229,7 +1225,7 @@ struct BrowserRoutesView: View {
             Text("在 Chrome 扩展页开启开发者模式，选择“加载已解压的扩展程序”，再选上方打开的文件夹。面板改动后导出 JSON，并在扩展设置中导入即可同步。")
                 .font(.caption2)
                 .foregroundStyle(.secondary)
-            DisclosureGroup("管理规则（\(store.browserRoutes.count) 条）") {
+            CollapsibleFeature("管理规则（\(store.browserRoutes.count) 条）", id: "browser-rules", initiallyExpanded: false) {
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(spacing: 6) {
                         TextField("分组", text: $group).frame(width: 54)

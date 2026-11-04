@@ -15,7 +15,7 @@
 		1EF626DD304DB4520054157C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF626DC304DB4520054157C /* ViewController.swift */; };
 		1EF626E0304DB4520054157C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EF626DE304DB4520054157C /* Main.storyboard */; };
 		1EF626E2304DB4530054157C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EF626E1304DB4530054157C /* Assets.xcassets */; };
-		1EF626E9304DB4530054157C /* MacPad Browser Routes Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1EF626E8304DB4530054157C /* MacPad Browser Routes Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1EF626E9304DB4530054157C /* mac+ Browser Routes Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1EF626E8304DB4530054157C /* mac+ Browser Routes Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1EF626EE304DB4530054157C /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF626ED304DB4530054157C /* SafariWebExtensionHandler.swift */; };
 		1EF62706304DB4530054157C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1EF626FA304DB4530054157C /* LICENSE */; };
 		1EF62707304DB4530054157C /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 1EF626FB304DB4530054157C /* background.js */; };
@@ -37,7 +37,7 @@
 			containerPortal = 1EF626C5304DB4520054157C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1EF626E7304DB4530054157C;
-			remoteInfo = "MacPad Browser Routes Extension";
+			remoteInfo = "mac+ Browser Routes Extension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -47,14 +47,14 @@
 			dstPath = "";
 			dstSubfolder = PlugIns;
 			files = (
-				1EF626E9304DB4530054157C /* MacPad Browser Routes Extension.appex in Embed Foundation Extensions */,
+				1EF626E9304DB4530054157C /* mac+ Browser Routes Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1EF626CD304DB4520054157C /* MacPad Browser Routes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacPad Browser Routes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EF626CD304DB4520054157C /* mac+ Browser Routes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac+ Browser Routes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF626D0304DB4520054157C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EF626D4304DB4520054157C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
 		1EF626D6304DB4520054157C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		1EF626DF304DB4520054157C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1EF626E1304DB4530054157C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EF626E3304DB4530054157C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1EF626E8304DB4530054157C /* MacPad Browser Routes Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MacPad Browser Routes Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EF626E8304DB4530054157C /* mac+ Browser Routes Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "mac+ Browser Routes Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF626ED304DB4530054157C /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		1EF626EF304DB4530054157C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EF626FA304DB4530054157C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = Resources/LICENSE; sourceTree = "<group>"; };
@@ -98,8 +98,8 @@
 		1EF626C4304DB4520054157C = {
 			isa = PBXGroup;
 			children = (
-				1EF626CF304DB4520054157C /* MacPad Browser Routes */,
-				1EF626EC304DB4530054157C /* MacPad Browser Routes Extension */,
+				1EF626CF304DB4520054157C /* mac+ Browser Routes */,
+				1EF626EC304DB4530054157C /* mac+ Browser Routes Extension */,
 				1EF626CE304DB4520054157C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,13 +107,13 @@
 		1EF626CE304DB4520054157C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1EF626CD304DB4520054157C /* MacPad Browser Routes.app */,
-				1EF626E8304DB4530054157C /* MacPad Browser Routes Extension.appex */,
+				1EF626CD304DB4520054157C /* mac+ Browser Routes.app */,
+				1EF626E8304DB4530054157C /* mac+ Browser Routes Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1EF626CF304DB4520054157C /* MacPad Browser Routes */ = {
+		1EF626CF304DB4520054157C /* mac+ Browser Routes */ = {
 			isa = PBXGroup;
 			children = (
 				1EF626D0304DB4520054157C /* AppDelegate.swift */,
@@ -123,7 +123,7 @@
 				1EF626E3304DB4530054157C /* Info.plist */,
 				1EF626D2304DB4520054157C /* Resources */,
 			);
-			path = "MacPad Browser Routes";
+			path = "mac+ Browser Routes";
 			sourceTree = "<group>";
 		};
 		1EF626D2304DB4520054157C /* Resources */ = {
@@ -137,14 +137,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		1EF626EC304DB4530054157C /* MacPad Browser Routes Extension */ = {
+		1EF626EC304DB4530054157C /* mac+ Browser Routes Extension */ = {
 			isa = PBXGroup;
 			children = (
 				1EF626F9304DB4530054157C /* Resources */,
 				1EF626ED304DB4530054157C /* SafariWebExtensionHandler.swift */,
 				1EF626EF304DB4530054157C /* Info.plist */,
 			);
-			path = "MacPad Browser Routes Extension";
+			path = "mac+ Browser Routes Extension";
 			sourceTree = "<group>";
 		};
 		1EF626F9304DB4530054157C /* Resources */ = {
@@ -164,15 +164,15 @@
 				1EF62705304DB4530054157C /* options.css */,
 			);
 			name = Resources;
-			path = "MacPad Browser Routes Extension";
+			path = "mac+ Browser Routes Extension";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1EF626CC304DB4520054157C /* MacPad Browser Routes */ = {
+		1EF626CC304DB4520054157C /* mac+ Browser Routes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EF626F6304DB4530054157C /* Build configuration list for PBXNativeTarget "MacPad Browser Routes" */;
+			buildConfigurationList = 1EF626F6304DB4530054157C /* Build configuration list for PBXNativeTarget "mac+ Browser Routes" */;
 			buildPhases = (
 				1EF626C9304DB4520054157C /* Sources */,
 				1EF626CA304DB4520054157C /* Frameworks */,
@@ -184,14 +184,14 @@
 			dependencies = (
 				1EF626EB304DB4530054157C /* PBXTargetDependency */,
 			);
-			name = "MacPad Browser Routes";
-			productName = "MacPad Browser Routes";
-			productReference = 1EF626CD304DB4520054157C /* MacPad Browser Routes.app */;
+			name = "mac+ Browser Routes";
+			productName = "mac+ Browser Routes";
+			productReference = 1EF626CD304DB4520054157C /* mac+ Browser Routes.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1EF626E7304DB4530054157C /* MacPad Browser Routes Extension */ = {
+		1EF626E7304DB4530054157C /* mac+ Browser Routes Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EF626F2304DB4530054157C /* Build configuration list for PBXNativeTarget "MacPad Browser Routes Extension" */;
+			buildConfigurationList = 1EF626F2304DB4530054157C /* Build configuration list for PBXNativeTarget "mac+ Browser Routes Extension" */;
 			buildPhases = (
 				1EF626E4304DB4530054157C /* Sources */,
 				1EF626E5304DB4530054157C /* Frameworks */,
@@ -199,9 +199,9 @@
 			);
 			buildRules = (
 			);
-			name = "MacPad Browser Routes Extension";
-			productName = "MacPad Browser Routes Extension";
-			productReference = 1EF626E8304DB4530054157C /* MacPad Browser Routes Extension.appex */;
+			name = "mac+ Browser Routes Extension";
+			productName = "mac+ Browser Routes Extension";
+			productReference = 1EF626E8304DB4530054157C /* mac+ Browser Routes Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +222,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1EF626C8304DB4520054157C /* Build configuration list for PBXProject "MacPad Browser Routes" */;
+			buildConfigurationList = 1EF626C8304DB4520054157C /* Build configuration list for PBXProject "mac+ Browser Routes" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -236,8 +236,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1EF626CC304DB4520054157C /* MacPad Browser Routes */,
-				1EF626E7304DB4530054157C /* MacPad Browser Routes Extension */,
+				1EF626CC304DB4520054157C /* mac+ Browser Routes */,
+				1EF626E7304DB4530054157C /* mac+ Browser Routes Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -292,7 +292,7 @@
 /* Begin PBXTargetDependency section */
 		1EF626EB304DB4530054157C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1EF626E7304DB4530054157C /* MacPad Browser Routes Extension */;
+			target = 1EF626E7304DB4530054157C /* mac+ Browser Routes Extension */;
 			targetProxy = 1EF626EA304DB4530054157C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -317,7 +317,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1EF626F0304DB4530054157C /* Debug configuration for PBXProject "MacPad Browser Routes" */ = {
+		1EF626F0304DB4530054157C /* Debug configuration for PBXProject "mac+ Browser Routes" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -380,7 +380,7 @@
 			};
 			name = Debug;
 		};
-		1EF626F1304DB4530054157C /* Release configuration for PBXProject "MacPad Browser Routes" */ = {
+		1EF626F1304DB4530054157C /* Release configuration for PBXProject "mac+ Browser Routes" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -435,7 +435,7 @@
 			};
 			name = Release;
 		};
-		1EF626F3304DB4530054157C /* Debug configuration for PBXNativeTarget "MacPad Browser Routes Extension" */ = {
+		1EF626F3304DB4530054157C /* Debug configuration for PBXNativeTarget "mac+ Browser Routes Extension" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -444,8 +444,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MacPad Browser Routes Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "MacPad Browser Routes Extension";
+				INFOPLIST_FILE = "mac+ Browser Routes Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "mac+ Browser Routes Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,7 +469,7 @@
 			};
 			name = Debug;
 		};
-		1EF626F4304DB4530054157C /* Release configuration for PBXNativeTarget "MacPad Browser Routes Extension" */ = {
+		1EF626F4304DB4530054157C /* Release configuration for PBXNativeTarget "mac+ Browser Routes Extension" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -478,8 +478,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MacPad Browser Routes Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "MacPad Browser Routes Extension";
+				INFOPLIST_FILE = "mac+ Browser Routes Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "mac+ Browser Routes Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,7 +503,7 @@
 			};
 			name = Release;
 		};
-		1EF626F7304DB4530054157C /* Debug configuration for PBXNativeTarget "MacPad Browser Routes" */ = {
+		1EF626F7304DB4530054157C /* Debug configuration for PBXNativeTarget "mac+ Browser Routes" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -516,8 +516,8 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MacPad Browser Routes/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "MacPad Browser Routes";
+				INFOPLIST_FILE = "mac+ Browser Routes/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "mac+ Browser Routes";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -544,7 +544,7 @@
 			};
 			name = Debug;
 		};
-		1EF626F8304DB4530054157C /* Release configuration for PBXNativeTarget "MacPad Browser Routes" */ = {
+		1EF626F8304DB4530054157C /* Release configuration for PBXNativeTarget "mac+ Browser Routes" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -557,8 +557,8 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MacPad Browser Routes/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "MacPad Browser Routes";
+				INFOPLIST_FILE = "mac+ Browser Routes/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "mac+ Browser Routes";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -588,27 +588,27 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1EF626C8304DB4520054157C /* Build configuration list for PBXProject "MacPad Browser Routes" */ = {
+		1EF626C8304DB4520054157C /* Build configuration list for PBXProject "mac+ Browser Routes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1EF626F0304DB4530054157C /* Debug configuration for PBXProject "MacPad Browser Routes" */,
-				1EF626F1304DB4530054157C /* Release configuration for PBXProject "MacPad Browser Routes" */,
+				1EF626F0304DB4530054157C /* Debug configuration for PBXProject "mac+ Browser Routes" */,
+				1EF626F1304DB4530054157C /* Release configuration for PBXProject "mac+ Browser Routes" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		1EF626F2304DB4530054157C /* Build configuration list for PBXNativeTarget "MacPad Browser Routes Extension" */ = {
+		1EF626F2304DB4530054157C /* Build configuration list for PBXNativeTarget "mac+ Browser Routes Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1EF626F3304DB4530054157C /* Debug configuration for PBXNativeTarget "MacPad Browser Routes Extension" */,
-				1EF626F4304DB4530054157C /* Release configuration for PBXNativeTarget "MacPad Browser Routes Extension" */,
+				1EF626F3304DB4530054157C /* Debug configuration for PBXNativeTarget "mac+ Browser Routes Extension" */,
+				1EF626F4304DB4530054157C /* Release configuration for PBXNativeTarget "mac+ Browser Routes Extension" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		1EF626F6304DB4530054157C /* Build configuration list for PBXNativeTarget "MacPad Browser Routes" */ = {
+		1EF626F6304DB4530054157C /* Build configuration list for PBXNativeTarget "mac+ Browser Routes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1EF626F7304DB4530054157C /* Debug configuration for PBXNativeTarget "MacPad Browser Routes" */,
-				1EF626F8304DB4530054157C /* Release configuration for PBXNativeTarget "MacPad Browser Routes" */,
+				1EF626F7304DB4530054157C /* Debug configuration for PBXNativeTarget "mac+ Browser Routes" */,
+				1EF626F8304DB4530054157C /* Release configuration for PBXNativeTarget "mac+ Browser Routes" */,
 			);
 			defaultConfigurationName = Release;
 		};

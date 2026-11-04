@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleDisplayName</key>
-    <string>Mac Efficiency Hub</string>
+    <string>mac+</string>
     <key>CFBundleExecutable</key>
-    <string>MacEfficiencyHub</string>
+    <string>mac+</string>
     <key>CFBundleIdentifier</key>
     <string>com.ink1ing.macefficiencyhub</string>
     <key>CFBundleName</key>
-    <string>Mac Efficiency Hub</string>
+    <string>mac+</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

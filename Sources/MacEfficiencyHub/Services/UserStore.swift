@@ -46,7 +46,6 @@ enum TabShortcutTarget: String, CaseIterable, Identifiable {
     case network
     case networkQuick
     case ytdlp
-    case memory
     case cleanMemory
     case forceQuit
     case screenshot
@@ -75,7 +74,6 @@ enum TabShortcutTarget: String, CaseIterable, Identifiable {
         case .network: "网络：检测第一个固定网址"
         case .networkQuick: "网络：快速检测"
         case .ytdlp: "yt-dlp：检查配置"
-        case .memory: "内存：刷新读数"
         case .cleanMemory: "内存：清理"
         case .forceQuit: "强制退出当前应用"
         case .screenshot: "截图到桌面"
@@ -121,6 +119,7 @@ struct HubSettings: Codable, Sendable {
         claudeShortcutKey = try values.decodeIfPresent(String.self, forKey: .claudeShortcutKey) ?? ""
         tabShortcutKey = try values.decodeIfPresent(String.self, forKey: .tabShortcutKey) ?? ""
         tabShortcutTarget = try values.decodeIfPresent(String.self, forKey: .tabShortcutTarget) ?? TabShortcutTarget.panel.rawValue
+        if tabShortcutTarget == "memory" { tabShortcutTarget = TabShortcutTarget.panel.rawValue }
     }
 }
 

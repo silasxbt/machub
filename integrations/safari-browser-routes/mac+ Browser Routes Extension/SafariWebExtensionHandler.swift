@@ -1,6 +1,6 @@
 //
 //  SafariWebExtensionHandler.swift
-//  MacPad Browser Routes Extension
+//  mac+ Browser Routes Extension
 //
 //  Created by silas on 9/6/26.
 //

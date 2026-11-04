@@ -80,7 +80,7 @@ struct GitHubReleaseAsset: Decodable, Sendable {
 }
 
 enum UpdateService {
-    static let applicationArchiveName = "Mac-Efficiency-Hub.zip"
+    static let applicationArchiveName = "mac+.zip"
 
     static func latestRelease(repository: String) async throws -> GitHubRelease {
         let trimmed = repository.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -90,7 +90,7 @@ enum UpdateService {
         }
         var request = URLRequest(url: url)
         request.timeoutInterval = 10
-        request.setValue("MacEfficiencyHub/0.1", forHTTPHeaderField: "User-Agent")
+        request.setValue("mac+/0.1", forHTTPHeaderField: "User-Agent")
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse, (200...299).contains(http.statusCode) else {
             throw UpdateError.noRelease
@@ -189,7 +189,7 @@ enum UpdateError: LocalizedError {
         switch self {
         case .invalidRepository: "GitHub 仓库格式应为 owner/repository"
         case .noRelease: "未找到可公开访问的 GitHub Release"
-        case .invalidArchive: "Release 中缺少受支持的 Mac-Efficiency-Hub.zip"
+        case .invalidArchive: "Release 中缺少受支持的 mac+.zip"
         case .downloadFailed: "更新包下载失败"
         case .signatureFailed: "更新包签名校验失败"
         case .unsupportedInstall: "只能从已安装的应用内执行自动更新"

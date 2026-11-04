@@ -1,6 +1,6 @@
-## MacPad Browser Routes
+## mac+ Browser Routes
 
-One-liner: MacPad's bundled Chrome prefix router, with drag reorder, quick-start onboarding, and built-in AI / Browser / Web3 routes.
+One-liner: mac+'s bundled Chrome prefix router, with drag reorder, quick-start onboarding, and built-in AI / Browser / Web3 routes.
 
 ## What It Does
 - Lightweight Chrome extension that turns simple prefixes into smart redirects.
