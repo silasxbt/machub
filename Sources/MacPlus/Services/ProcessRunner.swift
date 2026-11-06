@@ -11,7 +11,7 @@ enum ProcessRunner {
         process.executableURL = URL(fileURLWithPath: executable)
         process.arguments = arguments
         process.currentDirectoryURL = directory
-        let outputURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("MacEfficiencyHub-\(UUID().uuidString).log")
+        let outputURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("mac+-\(UUID().uuidString).log")
         FileManager.default.createFile(atPath: outputURL.path, contents: nil)
         let output = try FileHandle(forWritingTo: outputURL)
         process.standardOutput = output

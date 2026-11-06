@@ -5,20 +5,20 @@ let package = Package(
     name: "mac+",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "mac+", targets: ["MacEfficiencyHub"])
+        .executable(name: "mac+", targets: ["MacPlus"])
     ],
     targets: [
         .executableTarget(
-            name: "MacEfficiencyHub",
-            path: "Sources/MacEfficiencyHub",
+            name: "MacPlus",
+            path: "Sources/MacPlus",
             linkerSettings: [
                 .linkedFramework("SafariServices")
             ]
         ),
         .testTarget(
-            name: "MacEfficiencyHubTests",
-            dependencies: ["MacEfficiencyHub"],
-            path: "Tests/MacEfficiencyHubTests"
+            name: "MacPlusTests",
+            dependencies: ["MacPlus"],
+            path: "Tests/MacPlusTests"
         )
     ]
 )

@@ -26,22 +26,24 @@
 - Mac 诊断使用一次性、基础详情且跳过压测的方式运行；原始采集结果只用于生成桌面 PDF，不会保留在应用目录。
 - 本地 Matter 控制台强制绑定到 `127.0.0.1`；远程访问只能经 Cloudflare Tunnel，并应配置 Cloudflare Access 登录策略。
 
-首次在打包应用中启动 Matter 时，应用会将组件复制到 `~/Library/Application Support/MacEfficiencyHub/components`，随后在那里安装 Node 依赖和保存 Matter 配对数据。密钥、PIN 和运行状态不会写入本仓库、应用包或 GitHub Release。
+首次在打包应用中启动 Matter 时，应用会将组件复制到 `~/Library/Application Support/mac+/components`，随后在那里安装 Node 依赖和保存 Matter 配对数据。密钥、PIN 和运行状态不会写入本仓库、应用包或 GitHub Release。
 
-产品名称统一为 `mac+`。为兼容已有安装，内部 Swift 模块、应用标识和上述用户数据目录保留原技术名称；GitHub 仓库仍为 `silasxbt/machub`。
+产品名称统一为 `mac+`。内部 Swift 模块为 `MacPlus`；为兼容已有安装，应用标识保留原技术名称；旧数据目录 `MacEfficiencyHub` 会在启动时自动迁移到 `mac+`；GitHub 仓库仍为 `silasxbt/machub`。
 
 ## 构建和运行
+
+需要 Xcode 命令行环境；如有多个 Xcode，可用 `DEVELOPER_DIR` 指定。
 
 开发运行：
 
 ```bash
-DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer swift run 'mac+'
+swift run 'mac+'
 ```
 
 测试：
 
 ```bash
-DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer swift test
+swift test
 ```
 
 生成可分发 `.app` 和 ZIP：

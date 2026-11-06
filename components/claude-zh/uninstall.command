@@ -1,7 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 APP="${CLAUDE_APP_PATH:-/Applications/Claude.app}"
-SUPPORT="$HOME/Library/Application Support/MacEfficiencyHub/claude-zh"
+SUPPORT="$HOME/Library/Application Support/mac+/claude-zh"
+LEGACY_SUPPORT="$HOME/Library/Application Support/MacEfficiencyHub/claude-zh"
+[ -e "$SUPPORT" ] || [ ! -e "$LEGACY_SUPPORT" ] || SUPPORT="$LEGACY_SUPPORT"
 BACKUP="$SUPPORT/Claude-original.app"
 [ -d "$BACKUP" ] || { echo '未找到原始 Claude 备份' >&2; exit 1; }
 codesign --verify --deep --strict "$BACKUP" || { echo '备份签名无效' >&2; exit 1; }

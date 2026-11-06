@@ -1,7 +1,7 @@
 import XCTest
-@testable import MacEfficiencyHub
+@testable import MacPlus
 
-final class MacEfficiencyHubTests: XCTestCase {
+final class MacPlusTests: XCTestCase {
     func testRedactionDoesNotExposeSensitiveValue() {
         let line = "api_key = \"secret-value\""
         let result = ConfigurationService.redact(line)
@@ -52,7 +52,23 @@ final class MacEfficiencyHubTests: XCTestCase {
         XCTAssertEqual(decoded.path, shortcut.path)
     }
 
-    func testLegacyRepositoryMigratesToMachub() throws {
+    func testSupportDirectoryMigratesLegacyData() throws {
+        let manager = FileManager.default
+        let root = manager.temporaryDirectory.appendingPathComponent("mac+-Support-Test-\(UUID().uuidString)")
+        defer { try? manager.removeItem(at: root) }
+        let current = root.appendingPathComponent("mac+")
+        let legacy = root.appendingPathComponent("MacEfficiencyHub")
+        try manager.createDirectory(at: legacy, withIntermediateDirectories: true)
+        try Data("{}".utf8).write(to: legacy.appendingPathComponent("settings.json"))
+
+        XCTAssertEqual(SupportDirectory.prepare(current: current, legacy: legacy), current)
+        XCTAssertTrue(manager.fileExists(atPath: current.appendingPathComponent("settings.json").path))
+        XCTAssertEqual(try manager.destinationOfSymbolicLink(atPath: legacy.path), current.path)
+        XCTAssertTrue(manager.fileExists(atPath: legacy.appendingPathComponent("settings.json").path))
+        XCTAssertEqual(SupportDirectory.prepare(current: current, legacy: legacy), current)
+    }
+
+    func testLegacyRepositoryMigratesToCurrentRepository() throws {
         let data = #"{"githubRepository":"silasxbt/macpad"}"#.data(using: .utf8)!
         let settings = try JSONDecoder().decode(HubSettings.self, from: data)
 
@@ -62,7 +78,7 @@ final class MacEfficiencyHubTests: XCTestCase {
 
     @MainActor
     func testDiagnosticMarkdownExportsToPDF() throws {
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("MacEfficiencyHub-PDF-Test-\(UUID().uuidString)", isDirectory: true)
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("mac+-PDF-Test-\(UUID().uuidString)", isDirectory: true)
         let markdown = directory.appendingPathComponent("report.md")
         let pdf = directory.appendingPathComponent("report.pdf")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)

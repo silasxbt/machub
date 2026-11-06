@@ -123,7 +123,7 @@ enum UpdateService {
         guard let http = response as? HTTPURLResponse, (200...299).contains(http.statusCode) else { throw UpdateError.downloadFailed }
 
         let manager = FileManager.default
-        let staging = manager.temporaryDirectory.appendingPathComponent("MacEfficiencyHub-Update-\(UUID().uuidString)", isDirectory: true)
+        let staging = manager.temporaryDirectory.appendingPathComponent("mac+-Update-\(UUID().uuidString)", isDirectory: true)
         try manager.createDirectory(at: staging, withIntermediateDirectories: true)
         do {
             let extraction = try ProcessRunner.run(executable: "/usr/bin/ditto", arguments: ["-x", "-k", archive.path, staging.path], timeout: 120)
@@ -150,8 +150,8 @@ enum UpdateService {
     }
 
     private static func scheduleReplacement(from candidate: URL, to target: URL, staging: URL) throws {
-        let script = FileManager.default.temporaryDirectory.appendingPathComponent("MacEfficiencyHub-Install-\(UUID().uuidString).zsh")
-        let backup = target.deletingLastPathComponent().appendingPathComponent(".MacEfficiencyHub-previous-\(UUID().uuidString)")
+        let script = FileManager.default.temporaryDirectory.appendingPathComponent("mac+-Install-\(UUID().uuidString).zsh")
+        let backup = target.deletingLastPathComponent().appendingPathComponent(".mac+-previous-\(UUID().uuidString)")
         let contents = """
         #!/bin/zsh
         sleep 1

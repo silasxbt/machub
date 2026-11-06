@@ -418,7 +418,7 @@ final class HubModel: ObservableObject {
         lastAction = "正在运行 Mac 诊断…"
         let root = AppPaths.component("ast-plus")
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let temporaryOutput = FileManager.default.temporaryDirectory.appendingPathComponent("MacEfficiencyHub-Diagnostic-\(UUID().uuidString)", isDirectory: true)
+            let temporaryOutput = FileManager.default.temporaryDirectory.appendingPathComponent("mac+-Diagnostic-\(UUID().uuidString)", isDirectory: true)
             let result = Result {
                 try FileManager.default.createDirectory(at: temporaryOutput, withIntermediateDirectories: true)
                 return try ProcessRunner.run(
@@ -622,8 +622,7 @@ enum AppPaths {
             return developmentPath
         }
 
-        let support = manager.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/MacEfficiencyHub/components", isDirectory: true)
+        let support = SupportDirectory.url.appendingPathComponent("components", isDirectory: true)
         let destination = support.appendingPathComponent(name, isDirectory: true)
         if manager.fileExists(atPath: destination.path) { return destination }
         do {

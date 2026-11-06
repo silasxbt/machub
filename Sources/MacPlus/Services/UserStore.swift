@@ -136,7 +136,7 @@ final class UserStore: ObservableObject {
     @Published var settings = HubSettings()
     private let directory: URL
     init() {
-        directory = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/MacEfficiencyHub")
+        directory = SupportDirectory.url
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         actions = load([HubAction].self, name: "actions.json") ?? []
         scripts = load([ScriptShortcut].self, name: "scripts.json") ?? []
