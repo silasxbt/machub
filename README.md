@@ -32,7 +32,7 @@
 
 ## 构建和运行
 
-需要 Xcode 命令行环境；如有多个 Xcode，可用 `DEVELOPER_DIR` 指定。
+需要 Xcode 26.0 或更新版本（正式版和 beta 均可）；如有多个 Xcode，可用 `DEVELOPER_DIR` 指定。
 
 开发运行：
 
